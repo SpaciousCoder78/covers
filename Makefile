@@ -1,5 +1,5 @@
 # Makefile for CALP
-# License: BSD-2-Clause
+# License: GNU GPL-3
 # Copyright (C) 2025 Aryan Karamtoth
 
 install: src/main.c

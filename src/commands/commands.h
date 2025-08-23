@@ -1,7 +1,7 @@
 /*
 File: commands.h
 Description: Header file containing list of commands
-License: BSD-2-Clause
+License: GNU GPL-3
 Copyright (C) 2025 Aryan Karamtoth
 */
 
