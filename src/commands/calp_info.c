@@ -5,18 +5,23 @@ License: GNU GPL-3
 Copyright (C) 2025 Aryan Karamtoth
 */
 
-#include "commands.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
+#include "commands.h"
 
 char calp_info(int argc, char *argv[]){
-	if (argc > 1){
+	
+	
+	if (argc < 2){
 		printf("Too few arguments supplied");
+		return 0;
 	}
+	char *var = argv[1];	
 
+	int val = strcmp(var,"version");
 
-
-	else {
+	if (val==0) {
 		printf("Version 1.0");
 	}
 
@@ -24,17 +29,4 @@ char calp_info(int argc, char *argv[]){
 
 }
 
-
-int main(int argc, char *argv[]){
-	if (argc > 1){
-		printf("Too few arguments supplied");
-	}
-
-	else {
-		printf("Version 1.0");
-	}
-
-	return 0;
-
-}
 

@@ -4,7 +4,7 @@
 
 install: src/main.c
 	mkdir dist
-	gcc src/main.c -o dist/calp
+	gcc src/main.c src/commands/calp_info.c -Wall -Wpedantic -Wextra -o dist/calp
 
 clean:
 	rm -rf dist  

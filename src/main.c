@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include "commands/commands.h"
 
-int main(){
+int main(int argc, char *argv[]) {
 	
-	char calp_info(int argc, char *argv[]);
+	 calp_info(argc,argv);
 
 }
