@@ -14,7 +14,7 @@ Copyright (C) 2025 Aryan Karamtoth
 char clpm_info(int argc, char *argv[]){
 	
 	
-	if (argc < 2){
+	if (argc < 3){
 		printf("Too few arguments supplied\n");
 		return 0;
 	}
@@ -38,17 +38,17 @@ char clpm_install(int argc,char *argv[]){
         printf("clpm install: Too few arguments supplied");
     }
 
-    char *cmd = argv[2];
-    char *pkgname = argv[3];
+    char *cmd = argv[1];
+    char *pkgname = argv[2];
 
     int val = strcmp(cmd,"install");
 
-    char precmd[SIZE] = "git clone";
+    char precmd[SIZE] = "git clone ";
 
     strcat(precmd,pkgname);
     strcat(installcmd,precmd);
 
-    if(val==1){
+    if(val==0){
         system("cd ../");
         system(installcmd);
     }
