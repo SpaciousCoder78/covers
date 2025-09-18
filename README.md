@@ -1,3 +1,3 @@
-# calp
+# clpm
 
-CALP - C Application Library Packages is a package manager for C
+CLPM is a package manager for C
