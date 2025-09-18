@@ -4,7 +4,7 @@
 
 install: src/main.c
 	mkdir dist
-	gcc src/main.c src/commands/commands.c -Wall -Wpedantic -Wextra -o dist/clpm
+	gcc src/main.c src/commands/commands.c -Wall -Wpedantic -Wextra -o  dist/clpm -fsanitize=address,undefined,bounds -g3
 
 clean:
 	rm -rf dist  

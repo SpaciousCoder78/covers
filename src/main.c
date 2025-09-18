@@ -4,5 +4,6 @@
 int main(int argc, char *argv[]) {
 	
 	 clpm_info(argc,argv);
+	 clpm_install(argc,argv);
 
 }

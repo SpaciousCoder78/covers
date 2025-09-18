@@ -9,6 +9,7 @@ Copyright (C) 2025 Aryan Karamtoth
 #include <stdio.h>
 #include <string.h>
 #include "commands.h"
+#define SIZE 300
 
 char clpm_info(int argc, char *argv[]){
 	
@@ -31,16 +32,21 @@ char clpm_info(int argc, char *argv[]){
 
 char clpm_install(int argc,char *argv[]){
 
+    char installcmd[SIZE];
+
     if(argc<3){
         printf("clpm install: Too few arguments supplied");
     }
 
-    char *cmd = argv[1];
-    char *pkgname = argv[2];
+    char *cmd = argv[2];
+    char *pkgname = argv[3];
 
     int val = strcmp(cmd,"install");
 
-    char *installcmd = strcat("git clone",pkgname);
+    char precmd[SIZE] = "git clone";
+
+    strcat(precmd,pkgname);
+    strcat(installcmd,precmd);
 
     if(val==1){
         system("cd ../");
