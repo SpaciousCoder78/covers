@@ -3,7 +3,7 @@
 
 int main(int argc, char *argv[]) {
 	
-	 clpm_info(argc,argv);
-	 clpm_install(argc,argv);
+	 covers_info(argc,argv);
+	 covers_install(argc,argv);
 
 }

@@ -1,7 +1,7 @@
 /*
 File: commands.c
-Description: Commands of CLPM
-License: GNU GPL-3
+Description: Commands of covers
+License: MIT
 Copyright (C) 2025 Aryan Karamtoth
 */
 
@@ -11,7 +11,7 @@ Copyright (C) 2025 Aryan Karamtoth
 #include "commands.h"
 #define SIZE 300
 
-char clpm_info(int argc, char *argv[]){
+char covers_info(int argc, char *argv[]){
 	
 	
 	if (argc < 3){
@@ -30,12 +30,12 @@ char clpm_info(int argc, char *argv[]){
 
 }
 
-char clpm_install(int argc,char *argv[]){
+char covers_install(int argc,char *argv[]){
 
     char installcmd[SIZE];
 
     if(argc<3){
-        printf("clpm install: Too few arguments supplied");
+        printf("covers install: Too few arguments supplied");
     }
 
     char *cmd = argv[1];
