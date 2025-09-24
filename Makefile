@@ -8,3 +8,6 @@ install: src/main.c
 
 clean:
 	rm -rf dist  
+
+root: src/main.c
+	sudo gcc src/main.c src/commands/commands.c -o /usr/local/bin/covers
