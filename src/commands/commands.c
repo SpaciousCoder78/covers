@@ -43,7 +43,7 @@ char covers_install(int argc,char *argv[]){
 
     int val = strcmp(cmd,"install");
 
-    char precmd[SIZE] = "git clone ";
+    char precmd[SIZE] = "git clone https://codeberg.org/covers/";
 
     char postcmd[SIZE] = " include/";
 
@@ -51,6 +51,7 @@ char covers_install(int argc,char *argv[]){
     strcat(installcmd,precmd);
     strcat(installcmd,postcmd);
     strcat(installcmd,pkgname);
+    printf("%c",*installcmd);
     if(val==0){
         system("mkdir include");
     
