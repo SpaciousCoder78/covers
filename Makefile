@@ -1,5 +1,5 @@
-# Makefile for CALP
-# License: GNU GPL-3
+# Makefile for covers
+# License: MIT
 # Copyright (C) 2025 Aryan Karamtoth
 
 install: src/main.c
@@ -11,3 +11,6 @@ clean:
 
 root: src/main.c
 	sudo gcc src/main.c src/commands/commands.c -o /usr/local/bin/covers
+
+rootrm:
+	sudo rm /usr/local/bin/covers

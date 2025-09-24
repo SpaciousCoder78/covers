@@ -16,14 +16,21 @@ char covers_info(int argc, char *argv[]){
 	
 	if (argc < 3){
 		printf("covers: Too few arguments supplied\n");
-		return 0;
+        exit(0);
 	}
 	char *var = argv[1];	
 
 	int val = strcmp(var,"version");
 
 	if (val==0) {
-		printf("Version 1.0\n");
+        printf("====================================\n");
+        printf("             Covers                 \n\n");
+        printf("   A Package/Library Manager for C\n\n");
+		printf("Version: 0.1.0\n");
+        printf("License: MIT\n");
+        printf("Author: Aryan Karamtoth\n");
+        printf("Git Browse: https://codeberg.org/covers\n");
+        printf("Submit a Carriage: https://codeberg.org/covers/submitcarriages/issues\n");
 	}
 
 	return 0;
@@ -36,6 +43,7 @@ char covers_install(int argc,char *argv[]){
 
     if(argc<3){
         printf("covers: Too few arguments supplied");
+        exit(0);
     }
 
     char *cmd = argv[1];

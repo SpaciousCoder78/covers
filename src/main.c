@@ -1,3 +1,10 @@
+/*
+File: main.c
+Description: Main file
+License: MIT
+Copyright (C) 2025 Aryan Karamtoth
+*/
+
 #include <stdio.h>
 #include "commands/commands.h"
 
