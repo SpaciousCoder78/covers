@@ -45,13 +45,21 @@ char covers_install(int argc,char *argv[]){
 
     char precmd[SIZE] = "git clone ";
 
+    char postcmd[SIZE] = " include/";
+
     strcat(precmd,pkgname);
     strcat(installcmd,precmd);
+    strcat(installcmd,postcmd);
+    strcat(installcmd,pkgname);
+    if(val==0){
+        system("mkdir include");
+    
+    }
 
     if(val==0){
-        system("cd ../");
         system(installcmd);
     }
+
     return 0;
 }
 
