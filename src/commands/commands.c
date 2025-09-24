@@ -15,7 +15,7 @@ char covers_info(int argc, char *argv[]){
 	
 	
 	if (argc < 3){
-		printf("Too few arguments supplied\n");
+		printf("covers: Too few arguments supplied\n");
 		return 0;
 	}
 	char *var = argv[1];	
@@ -35,7 +35,7 @@ char covers_install(int argc,char *argv[]){
     char installcmd[SIZE];
 
     if(argc<3){
-        printf("covers install: Too few arguments supplied");
+        printf("covers: Too few arguments supplied");
     }
 
     char *cmd = argv[1];
