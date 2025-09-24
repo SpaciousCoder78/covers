@@ -8,8 +8,10 @@ Copyright (C) 2025 Aryan Karamtoth
 #include <stdio.h>
 #include "commands/commands.h"
 
+//main func
 int main(int argc, char *argv[]) {
 	
+	//load all commands
 	 covers_info(argc,argv);
 	 covers_install(argc,argv);
 
