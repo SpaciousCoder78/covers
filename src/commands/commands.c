@@ -33,7 +33,7 @@ char covers_info(int argc, char *argv[]){
         printf("====================================\n");
         printf("             Covers                 \n\n");
         printf("   A Package/Library Manager for C\n\n");
-		printf("Version: 0.2.0\n");
+		printf("Version: 1.0.0\n");
         printf("License: MIT\n");
         printf("Author: Aryan Karamtoth\n");
         printf("Git Browse: https://codeberg.org/covers\n");
