@@ -13,5 +13,6 @@ char covers_info(int argc,char *argv[]);
 char covers_install(int argc, char *argv[]);
 char covers_init(int argc, char *argv[]);
 char covers_finalize_dependencies(int argc,char *argv[]);
+char covers_install_deps(int argc,char *argv[]);
 
 #endif 

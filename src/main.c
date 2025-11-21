@@ -16,5 +16,6 @@ int main(int argc, char *argv[]) {
 	 covers_install(argc,argv);
 	 covers_init(argc,argv);
 	 covers_finalize_dependencies(argc,argv);
+	 covers_install_deps(argc,argv);
 
 }

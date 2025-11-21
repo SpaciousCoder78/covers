@@ -143,21 +143,21 @@ char covers_init(int argc,char *argv[]){
 
     FILE *fp; //creating a file pointer
 
-    //insert all details into toml
+        //insert all details into toml
     char config[512] = "[carriage.config]\n";
-    strcat(config,"name = ");
+    strcat(config,"name = \"");
     strcat(config,carriageName);
-    strcat(config,"\n");
-    strcat(config,"version = ");
+    strcat(config,"\"\n");
+    strcat(config,"version = \"");
     strcat(config,carriageVersion);
-    strcat(config,"\n");
-    strcat(config,"author = ");
+    strcat(config,"\"\n");
+    strcat(config,"author = \"");
     strcat(config,authorName);
-    strcat(config,"\n");
-    strcat(config,"license = ");
+    strcat(config,"\"\n");
+    strcat(config,"license = \"");
     strcat(config,carriageLicense);
-    strcat(config,"\n\n");
-    strcat(config,"[carriage.dependencies] \n"
+    strcat(config,"\"\n\n");
+    strcat(config,"[carriage.dependencies]\n"
                         "dependencies = [\n");
 
     //create the toml file
@@ -175,6 +175,61 @@ char covers_init(int argc,char *argv[]){
         printf("covers: carriage-build.toml successfully generated!\n");
     }
 }
+    return 0;
+}
+
+void error(const char *msg, const char *msg1) {
+        fprintf(stderr, "ERROR: %s%s\n", msg, msg1 ? msg1 : "");
+        exit(1);
+    }
+
+char covers_install_deps(int argc,char *argv[]){
+
+
+    if (argc < 3){
+		printf("covers: Too few arguments supplied\n");
+        exit(0); //quit the program to avoid seg faults
+	}
+
+    char *cmd = argv[1];
+
+    int val = strcmp(cmd,"install-deps");
+
+    if (val==0){
+        toml_result_t result = toml_parse_file_ex("carriage-build.toml");
+        // Check for parse error
+        if (!result.ok) {
+        error(result.errmsg, 0);
+        }
+
+        // Extract values
+        toml_datum_t deps = toml_seek(result.toptab, "carriage.dependencies.dependencies");
+        
+        if (deps.type != TOML_ARRAY) {
+            error("missing or invalid 'carriage.dependencies.dependencies' property in config", 0);
+        }
+        for (int i = 0; i < deps.u.arr.size; i++) {
+            toml_datum_t cars = deps.u.arr.elem[i];
+            printf("covers: installing dependency '%s'...\n", cars.u.s);
+                
+            // Build install command
+            char installcmd[SIZE];
+            memset(installcmd, 0, sizeof(installcmd));
+                
+            char precmd[SIZE] = "git clone https://codeberg.org/covers/";
+            char postcmd[SIZE] = " include/";
+                
+            strcat(precmd, cars.u.s);
+            strcat(installcmd, precmd);
+            strcat(installcmd, postcmd);
+            strcat(installcmd, cars.u.s);
+            system(installcmd);
+                printf("covers: dependency '%s' installed!\n", cars.u.s);
+            
+        }
+        printf("covers: all dependencies installed successfully!\n");
+        toml_free(result);
+    }
     return 0;
 }
 
