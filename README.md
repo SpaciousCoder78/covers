@@ -7,7 +7,6 @@
 
 `covers` is a Package/Library Manager for C to help you install curated C libraries into your project.
 
-`covers` is still in its Beta phase with a lot of features planned.
  
 ## Submit a Carriage(Package)
 To submit a Carriage(also called package) to `covers`, just open an issue in this <a href="https://codeberg.org/covers/submitcarriages/issues" target="_blank">repository</a>.
@@ -66,15 +65,29 @@ In software terms, `covers` is a package manager and Carriage is a package carri
 
 ### Usage
 
-As of v0.1.0, `covers` only supports two commands:
 
 To check the version and information about `covers`:
 
 ```$ covers version -v```
 
+Firstly, create a new folder for your project and run the following command to build a config file for your project:
+
+```$ covers init -i```
+
 To install a Carriage from the <a href="https://codeberg.org/covers">Official Package Repository </a>:
 
 ```$ covers install carriagename```
+
+Once you're done with installing the carriages you need, run the following command:
+
+```$covers finalize -f```
+
+`covers` will generate a `carriage-build.toml` (introduced in v1.0.0) which contains all of your project details and handles dependencies.
+
+If you want to reinstall your carriages on a different computer, run the following command:
+
+```$covers install-deps -i```
+
 
 ## Why I made this + Contributing
 
@@ -82,9 +95,7 @@ I, SpaciousCoder78, developed `covers` as a hobby project to learn C for develop
 
 `covers` is 100% free software and is developed using free software tools.
 
-This project could've been implemented in a much higher level language like Perl or Python but I wanted it to be a challenge and wanted to learn C so I wrote it entirely in C with hours of debugging with help from #c on Libera.chat and not using LLMs for anything in this project.
-
-This project is hereby 100% free as well as LLM-free so no contributions should have any usage of LLMs. 
+This project could've been implemented in a much higher level language like Perl or Python but I wanted it to be a challenge and wanted to learn C so I wrote it entirely in C with hours of debugging with help from #c on Libera.chat
 
 Further contribution guidelines will be introduced once `covers` is developed further.
 
