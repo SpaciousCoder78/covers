@@ -14,5 +14,6 @@ int main(int argc, char *argv[]) {
 	//load all commands
 	 covers_info(argc,argv);
 	 covers_install(argc,argv);
+	 covers_init(argc,argv);
 
 }

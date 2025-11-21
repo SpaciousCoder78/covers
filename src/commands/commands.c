@@ -10,6 +10,8 @@ Copyright (C) 2025 Aryan Karamtoth
 #include <stdio.h>
 #include <string.h>
 #include "commands.h"
+#include "../libs/tomlc17.h"
+
 #define SIZE 300 //creating a static buffer of 300 chars for string manipulations
 
 
@@ -88,3 +90,68 @@ char covers_install(int argc,char *argv[]){
     return 0;
 }
 
+//create a new carriage
+char covers_init(int argc,char *argv[]){
+    //hard coded minimum arguments of 3
+	if (argc < 3){
+		printf("covers: Too few arguments supplied\n");
+        exit(0); //quit the program to avoid seg faults
+	}
+
+    char *cmd = argv[1]; //get the arg used here it is "init"
+
+    //check if user actually typed init
+    int val = strcmp(cmd,"init");
+    //if they did
+    if (val==0){
+
+    char carriageName[32];
+    char carriageVersion[8];
+    char authorName[64];
+    char carriageLicense[32];
+
+    //get all carriage details
+    printf("Enter the name of Carriage: \n");
+    scanf("%s",carriageName);
+    printf("Enter the version: \n");
+    scanf("%s",carriageVersion);
+    printf("Enter the Author's Name: \n");
+    scanf("%s",authorName);
+    printf("Enter Carriage License: \n");
+    scanf("%s",carriageLicense);
+
+
+    FILE *fp; //creating a file pointer
+
+    //insert all details into toml
+    char config[512] = "[carriage.config]\n";
+    strcat(config,"name = ");
+    strcat(config,carriageName);
+    strcat(config,"\n");
+    strcat(config,"version = ");
+    strcat(config,carriageVersion);
+    strcat(config,"\n");
+    strcat(config,"author = ");
+    strcat(config,authorName);
+    strcat(config,"\n");
+    strcat(config,"license = ");
+    strcat(config,carriageLicense);
+    strcat(config,"\n");
+
+    //create the toml file
+    fp = fopen("carriage-build.toml","w");
+    
+    //write the juicy data into it
+    if(fp == NULL){
+        printf("Error: carriage-build.toml not opened\n");
+    }
+    else{
+        printf("covers: generating carriage-build.toml....\n");
+        fputs(config,fp);
+        fclose(fp);
+
+        printf("covers: carriage-build.toml successfully generated!\n");
+    }
+}
+    return 0;
+}

@@ -11,5 +11,6 @@ Copyright (C) 2025 Aryan Karamtoth
 //function definition dump
 char covers_info(int argc,char *argv[]);
 char covers_install(int argc, char *argv[]);
+char covers_init(int argc, char *argv[]);
 
 #endif 
