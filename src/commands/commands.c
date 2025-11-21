@@ -85,6 +85,26 @@ char covers_install(int argc,char *argv[]){
     //run the frankenstein-ed install command
     if(val==0){
         system(installcmd);
+        
+        FILE *fp;
+
+        char buf[128];
+        strcpy(buf, "    \"");
+        strcat(buf, pkgname);
+        strcat(buf, "\",\n");
+
+        fp = fopen("carriage-build.toml","a+");
+
+        if(fp == NULL){
+            printf("Error: carriage-build.toml not opened\n");
+        }
+        else{
+            printf("covers: installing carriage....\n");
+            fputs(buf, fp);
+            fclose(fp);
+
+            printf("covers: carriage successfully installed!\n");
+        }
     }
 
     return 0;
@@ -111,13 +131,13 @@ char covers_init(int argc,char *argv[]){
     char carriageLicense[32];
 
     //get all carriage details
-    printf("Enter the name of Carriage: \n");
+    printf("Enter the name of project: \n");
     scanf("%s",carriageName);
     printf("Enter the version: \n");
     scanf("%s",carriageVersion);
     printf("Enter the Author's Name: \n");
     scanf("%s",authorName);
-    printf("Enter Carriage License: \n");
+    printf("Enter Project License: \n");
     scanf("%s",carriageLicense);
 
 
@@ -136,7 +156,9 @@ char covers_init(int argc,char *argv[]){
     strcat(config,"\n");
     strcat(config,"license = ");
     strcat(config,carriageLicense);
-    strcat(config,"\n");
+    strcat(config,"\n\n");
+    strcat(config,"[carriage.dependencies] \n"
+                        "dependencies = [\n");
 
     //create the toml file
     fp = fopen("carriage-build.toml","w");
@@ -153,5 +175,34 @@ char covers_init(int argc,char *argv[]){
         printf("covers: carriage-build.toml successfully generated!\n");
     }
 }
+    return 0;
+}
+
+//finalize dependencies array in carriage-build.toml
+char covers_finalize_dependencies(int argc,char *argv[]){
+
+    if (argc < 3){
+		printf("covers: Too few arguments supplied\n");
+        exit(0); //quit the program to avoid seg faults
+	}
+
+    char *cmd = argv[1];
+
+    int val = strcmp(cmd,"finalize");
+
+    if (val==0){
+
+    
+
+    FILE *fp = fopen("carriage-build.toml","a");
+    
+    if(fp == NULL){
+        printf("Error: carriage-build.toml not opened\n");
+        return 1;
+    }
+    
+    fputs("]\n", fp);
+    fclose(fp);
+    }
     return 0;
 }
